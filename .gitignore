@@ -1,0 +1,55 @@
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
+*.iml
+
+## Directory-based project format:
+.idea/
+
+## File-based project format:
+*.ipr
+*.iws
+
+## Maven target
+**/target/
+
+## Java Specific
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+## jenv local java version
+.java-version
+
+## Client specifics
+node
+public/node_modules/
+public/bower_components/
+**/.tmp/
+public/dist/
+public/src/app/config.js
+
+
+## Build specifics
+stage
+.java_depends
+
+## OSx
+.DS_STORE
+*.swp
+
+#netbeans files
+nb-configuration.xml
+/**/nbproject/*.properties
+
+#log files
+*.log
+*.log.*
+
+#eclipse files
+.project
+*.prefs
+*.classpath
+*.settings
+
