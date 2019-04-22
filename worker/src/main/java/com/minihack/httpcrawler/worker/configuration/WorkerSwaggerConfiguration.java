@@ -20,16 +20,15 @@ public class WorkerSwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                .apiInfo(apiInfo())
                .select()
-               .apis(RequestHandlerSelectors.basePackage("com.pandora.rights.worker"))
+               .apis(RequestHandlerSelectors.basePackage("com.minihack.httpcrawler.worker"))
                .paths(PathSelectors.any())
                .build();
     }
 
     private ApiInfo apiInfo() throws Exception {
         return new ApiInfoBuilder()
-               .title("Rights Worker")
-               .description("RIGHTS API TESTER")
-               .contact(new Contact("Content Operations", "https://wiki.savagebeast.com/display/eng/Content+Operations+-+External+Data", ""))
+               .title("Crawler Worker")
+               .description("Web Crawling TESTER")
                .build();
     }
 

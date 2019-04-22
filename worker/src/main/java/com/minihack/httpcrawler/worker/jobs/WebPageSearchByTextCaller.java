@@ -30,12 +30,14 @@ public class WebPageSearchByTextCaller implements Runnable {
         try {
             // load the response
             // check if it contains the search text, if so, write it into the output file
-            Document doc = Jsoup.connect(url).get();
+            Document doc = Jsoup.connect(String.format("https://%s", url.replaceAll("^\"|\"$", ""))).get();
 
-            if(doc.text().contains(text)){
+            if(doc.body().text().toLowerCase().contains(text.toLowerCase())){
                 writer = new FileWriter(new File(outputFilePath), true);
                 writer.write(url);
                 writer.write(System.lineSeparator());
+                writer.flush();
+                writer.close();
             }
 
         } catch (IOException e) {

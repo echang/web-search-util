@@ -58,6 +58,7 @@ public class WebCrawlerTestingController {
             inputFilePath = mainProperties.getProperty("crawler.input.local.path");
             outputFilePath = mainProperties.getProperty("crawler.output.local.path");
 
+            
             List<String> lines = FileUtils.readLines(new File(inputFilePath), "utf-8");
             //Need to take split with ",", take the second items after line 1
             lines.remove(0);
@@ -71,7 +72,8 @@ public class WebCrawlerTestingController {
                     Thread t = new Thread(new WebPageSearchByTextCaller(text,url,outputFilePath));
                     t.start();
                     ts.add(t);
-                    System.out.print("thread count : " + i);
+                    if(queue.size() ==0)
+                        break;
                 }
 
                 for(int i = 0; i < ts.size(); i++)
@@ -81,6 +83,7 @@ public class WebCrawlerTestingController {
             return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<Void>(HttpStatus.NOT_ACCEPTABLE);
         }
 
