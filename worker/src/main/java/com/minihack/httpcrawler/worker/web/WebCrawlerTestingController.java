@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Properties;
+import java.util.Queue;
 
 
 @Api(description = "Api endpoint for searching against all urls")
@@ -28,37 +31,12 @@ import java.util.stream.Collectors;
 @RequestMapping("/search/testing")
 public class WebCrawlerTestingController {
 
-    public WebCrawlerTestingController() throws Exception
-    {
-    }
-
     @ApiOperation(value = "search the urls by input text",
             nickname = "searchUrlsByText")
     @RequestMapping(path = "/searchByText", method = RequestMethod.GET, params = {"numThreads","text"})
-    public ResponseEntity<Void> searchUrlsByText(@RequestParam(required = true, value = "numThreads",defaultValue = "20") String numThreads,@RequestParam(required = true, value = "text") String text) {
+    public ResponseEntity<Void> searchUrlsByText(@RequestParam(required = true, value = "numThreads",defaultValue = "20") String numThreads,@RequestParam(required = true, value = "text") String text,@RequestParam(required = true, value = "inputFilePath") String inputFilePath,@RequestParam(required = true, value = "outputFilePath") String outputFilePath) {
 
         try {
-
-            String inputFilePath = null;
-            String outputFilePath = null;
-
-
-            Properties mainProperties = new Properties();
-            FileInputStream file;
-
-            //the base folder is ./, the root of the application.properties file
-            String path = "./application.properties";
-
-            //load the file handle for application.properties
-            file = new FileInputStream(path);
-            //load all the properties from this file
-            mainProperties.load(file);
-            file.close();
-
-            inputFilePath = mainProperties.getProperty("crawler.input.local.path");
-            outputFilePath = mainProperties.getProperty("crawler.output.local.path");
-
-
             List<String> lines = FileUtils.readLines(new File(inputFilePath), "utf-8");
             //Need to take split with ",", take the second items after line 1
             lines.remove(0);
