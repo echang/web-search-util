@@ -58,7 +58,7 @@ public class WebCrawlerTestingController {
             inputFilePath = mainProperties.getProperty("crawler.input.local.path");
             outputFilePath = mainProperties.getProperty("crawler.output.local.path");
 
-            
+
             List<String> lines = FileUtils.readLines(new File(inputFilePath), "utf-8");
             //Need to take split with ",", take the second items after line 1
             lines.remove(0);
