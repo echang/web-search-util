@@ -1,8 +1,9 @@
-To run it, put `worker-1.0.0-SNAPSHOT.jar` file and the `application.properties` file in the same location 
+To run it, take the already compiled `worker-1.0.0-SNAPSHOT.jar` file
 Then run `java -jar worker-1.0.0-SNAPSHOT.jar`
 
-Drop the url.txt to the corresponding location in the `application.properties`
+Once it is running, go to http://localhost:8080/swagger-ui.html#/ to play with your search text, specify the full input file path to wherever you put the urls.txt and also the full file path of where the output file should be created at.
 
-Once it is running, go to http://localhost:8080/swagger-ui.html#/ to play with your search text
+You can also specify the number of threads created each time, default is 20.
 
-results.txt will be generate in the specified location in the `application.properties` file
+
+
